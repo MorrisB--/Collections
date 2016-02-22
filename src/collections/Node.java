@@ -4,6 +4,14 @@ package collections;
 public class Node<T> {
 	T info;
 	Node<T> next;
+	
+	public Node(){
+		
+	}
+	public Node(T value){
+		this.info = value;
+		this.next = null;
+	}
 
 	public String toString() {
 		return "" + info;
@@ -54,5 +62,9 @@ public class Node<T> {
 			r = r.next;
 		}
 		System.out.println();
+	}
+	
+	public Node<T> getNext(){
+		return next;
 	}
 }
