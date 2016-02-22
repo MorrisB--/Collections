@@ -6,6 +6,11 @@ public class LinkedList<T> extends Node<T> implements List<T> {
 	private int counter = 0;
 
 	public int size() {
+		/*
+		 * int size =0; Node<> if(this.info == null) return size; if
+		 * (this.next.info == null){ size++; return size; } if(this.next.info !=
+		 * null){ size++; Node<T> temp = new Node<T>(); temp = this.next; }
+		 */
 		return 0;
 	}
 
@@ -61,6 +66,25 @@ public class LinkedList<T> extends Node<T> implements List<T> {
 
 		// increment the number of elements variable
 		this.counter++;
+	}
+
+	public String toString() {
+		String output = "[";
+
+		if (root != null) {
+			Node<T> current = root.getNext();
+
+			while (current != null) {
+				if (current.next == null) {
+					output += current.toString();
+				} else
+					output += current.toString() + ", ";
+
+				current = current.getNext();
+			}
+		}
+		
+		return output + "]";
 	}
 
 }
