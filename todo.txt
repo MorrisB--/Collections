@@ -1,4 +1,7 @@
 TO DO:
 
-*Add add() method for node class
 *get LLTester working properly
+
+/* LinkedList */
+
+*Add toString() method

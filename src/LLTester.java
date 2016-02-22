@@ -28,7 +28,7 @@ public class LLTester {
 		System.out.println(list1);
 	}
 
-	//This will only work with LinkedLists, need to mage more generic
+	//This will only work with LinkedLists, need to make more generic
 	public static void checkContains(LinkedList<Integer> list, int v) {
 		if (list.contains(v)) {
 			System.out.println("List contains " + v + "!");
