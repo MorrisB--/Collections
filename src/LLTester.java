@@ -2,7 +2,7 @@ import collections.LinkedList;
 
 public class LLTester {
 	public static void main(String[] args) {
-		LinkedList list1 = new LinkedList();
+		LinkedList<Integer> list1 = new LinkedList<Integer>();
 		System.out.println(list1);
 
 		list1.add(10);
@@ -28,7 +28,8 @@ public class LLTester {
 		System.out.println(list1);
 	}
 
-	public static void checkContains(LinkedList list, int v) {
+	//This will only work with LinkedLists, need to mage more generic
+	public static void checkContains(LinkedList<Integer> list, int v) {
 		if (list.contains(v)) {
 			System.out.println("List contains " + v + "!");
 		} else {
