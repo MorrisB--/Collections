@@ -1,37 +1,38 @@
 package collections;
 
-public class LinkedList implements List {
+public class LinkedList<T> implements List<T> {
 	public int size() {
 		return 0;
 	}
 
-	public boolean contains(int val) {
+	public boolean contains(T val) {
 		return false;
 	}
 
 	public void clear() {
 	}
 
-	public int get(int pos) {
-		return 0;
+	public T get(int pos) {
+		return null;
 	}
 
-	public int get() {
-		return -1;
+	public T get() {
+		return null;
 	}
 
-	public int remove(int pos) {
-		return 0;
+	public T remove(int pos) {
+		return null;
 	}
 
-	public int remove() {
-		return -1;
+	public T remove() {
+		return null;
 	}
 
-	public void add(int info, int pos) {
+	public void add(T info, int pos) {
 	}
 
-	public void add(int info) {
+	public void add(T info) {
 	}
 
+	
 }
