@@ -1,29 +1,29 @@
 package collections;
 
-public interface List {
+public interface List<T> {
 	/* add element to the end of list */
-	void add(int info);
+	void add(T info);
 
 	/* add element to pos in list, after add, pos is index of element */
-	void add(int info, int pos);
+	void add(T info, int pos);
 
 	/* delete and return the last element */
-	int remove();
+	T remove();
 
 	/* delete and return the element at pos */
-	int remove(int pos);
+	T remove(int pos);
 
 	/* get contents of last element */
-	int get();
+	T get();
 
 	/* get contents of element at pos */
-	int get(int pos);
+	T get(int pos);
 
 	/* clear the list */
 	void clear();
 
 	/* return true if list contains val, false otherwise */
-	boolean contains(int val);
+	boolean contains(T val);
 
 	/* number of elements in list */
 	int size();
