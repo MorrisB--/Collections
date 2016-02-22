@@ -10,16 +10,16 @@ public class Node<T> {
 	}
 
 	public static void main(String[] args) {
-		Node n = new Node();
+		Node<Integer> n = new Node<Integer>();
 		n.info = 92;
 
-		Node m = new Node();
+		Node<Integer> m = new Node<Integer>();
 		m.info = 94;
-		Node o = new Node();
+		Node<Integer> o = new Node<Integer>();
 		o.info = 96;
-		Node p = new Node();
+		Node<Integer> p = new Node<Integer>();
 		p.info = 98;
-		Node r = new Node();
+		Node<Integer> r = new Node<Integer>();
 		r.info = 100;
 
 		n.next = m;
@@ -37,15 +37,18 @@ public class Node<T> {
 
 	}
 
-	public static void deleteAddr(Node x) {
+	//This will only work with integers, figure out a way to have it generic
+	public static void deleteAddr(Node<Integer> x) {
 		x = null;
 	}
 
+	//This will only work with integers, figure out a way to have it generic
 	public static void changeValue(Node<Integer> x) {
 		x.info = 2 * x.info;
 	}
 
-	public static void displayInfo(Node r) {
+	//This will only work with integers, figure out a way to have it generic
+	public static void displayInfo(Node<Integer> r) {
 		while (r != null) {
 			System.out.print(r.info + " ");
 			r = r.next;
