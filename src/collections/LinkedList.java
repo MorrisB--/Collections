@@ -19,6 +19,8 @@ public class LinkedList<T> extends Node<T> implements List<T> {
 	}
 
 	public void clear() {
+		Node<T> temp = new Node<T>();
+		root = temp;
 	}
 
 	public T get(int pos) {
