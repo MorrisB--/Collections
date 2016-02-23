@@ -55,16 +55,17 @@ public class LinkedList<T> extends Node<T> implements List<T> {
 		return element;
 	}
 
-	public T remove() {/*
-						 * Node<T> current = root; // if there is only one node
-						 * with info, make that info null if (current.next ==
-						 * null) current.info = null;
-						 * 
-						 * while (current.next != null) { if (current.next ==
-						 * null) current.info = null; else current.next =
-						 * current; }
-						 */
-		return null;
+	public T remove() {
+		T element = get(size() - 1);
+
+		Node<T> current = this.root;
+		if (root != null)
+			while (current.next.next != null) {
+				current = current.next;
+			}
+		current.next = null;
+		this.counter--;
+		return element;
 	}
 
 	public void add(T info, int pos) {
