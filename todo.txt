@@ -4,7 +4,4 @@ TO DO:
 
 /* LinkedList */
 
-*Add add(pram 1, pram 2) method
-*Add remove() method
-*add checkContains() method
-*add clear() method
+*Fix remove(pram1) method
