@@ -30,14 +30,62 @@ public class LinkedList<T> extends Node<T> implements List<T> {
 	}
 
 	public T remove(int pos) {
-		return null;
+		// should we consider if the user gives a number that is out of bounds?
+		// if (pos < 0 || pos > size())
+		// return null;
+
+		// save the element currently at pos to return to the user
+		T element = get(pos - 1);
+
+		Node<T> current = this.root;
+		if (root != null) {
+			for (int i = 0; i < pos; i++) {
+				if (current.next == null)
+					return element;
+
+				current = current.next;
+			}
+			current.next = current.next.next;
+
+			// decrement the number of elements variable
+			this.counter--;
+			return element;
+
+		}
+		return element;
 	}
 
-	public T remove() {
+	public T remove() {/*
+						 * Node<T> current = root; // if there is only one node
+						 * with info, make that info null if (current.next ==
+						 * null) current.info = null;
+						 * 
+						 * while (current.next != null) { if (current.next ==
+						 * null) current.info = null; else current.next =
+						 * current; }
+						 */
 		return null;
 	}
 
 	public void add(T info, int pos) {
+
+		Node<T> temp = new Node<T>(info);
+		Node<T> current = root;
+
+		if (current != null)
+			// crawl to the requested index or the last element in the list
+			for (int i = 1; i < pos && current.getNext() != null; i++)
+				current = current.getNext();
+
+		// set the new node's next-node to this node's next-node reference
+		temp.next = current.getNext();
+
+		// now set this node's next-node reference to the new node
+		current.next = temp;
+
+		// increment the number of elements variable
+		this.counter++;
+
 	}
 
 	public void add(T info) {
@@ -83,7 +131,7 @@ public class LinkedList<T> extends Node<T> implements List<T> {
 				current = current.getNext();
 			}
 		}
-		
+
 		return output + "]";
 	}
 
