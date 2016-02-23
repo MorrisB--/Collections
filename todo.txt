@@ -4,4 +4,4 @@ TO DO:
 
 /* LinkedList */
 
-*Fix remove(pram1) method
+*Get contains() method working
