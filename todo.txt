@@ -1,7 +1,1 @@
 TO DO:
-
-*get LLTester working properly
-
-/* LinkedList */
-
-*Get contains() method working
