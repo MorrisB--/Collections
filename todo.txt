@@ -1,4 +1,9 @@
-TODO
+To Do:
+
+* Create Queue
+* Create Stack
+* Create Binary Search Tree
+* Organize folders and packages
 
 /* LinkedList */
 
