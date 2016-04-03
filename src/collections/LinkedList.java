@@ -1,4 +1,4 @@
-package collections;
+package collections; 
 
 public class LinkedList<T> implements List<T> {
 
@@ -40,6 +40,7 @@ public class LinkedList<T> implements List<T> {
 		counter++;
 	}
 
+	@SuppressWarnings("unused")
 	private void decrementCounter() {
 		counter--;
 	}
