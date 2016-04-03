@@ -1,6 +1,5 @@
 To Do:
 
-* Add .gitignore
 * Create Queue
 * Create Stack
 * Create Binary Search Tree
