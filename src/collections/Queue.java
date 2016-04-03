@@ -10,7 +10,7 @@ public class Queue<T> {
 	}
 
 	public void enqueue(T info) {
-		
+
 		if (root == null) {
 			root = new Node<T>(info);
 		} else {
@@ -47,12 +47,16 @@ public class Queue<T> {
 		current.setNext(temp);
 
 		incrementSize();
-		
+
 	}
 
 	public T dequeue() {
-		
-		return null;
+
+		T returnedInfo = root.info;
+
+		root = root.getNext();
+
+		return returnedInfo;
 	}
 
 	// change to getSize()
