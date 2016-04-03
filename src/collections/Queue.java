@@ -71,6 +71,13 @@ public class Queue<T> {
 	private void decrementSize() {
 		this.size--;
 	}
+	
+
+	public boolean isEmpty() {
+		if (this.size() == 0)
+			return true;
+		return false;
+	}
 
 	public void clear() {
 
