@@ -28,7 +28,7 @@ public class Queue<T> {
 				current.setNext(temp);
 			}
 		}
-		incrementCounter();
+		incrementSize();
 	}
 
 	public void enqueue(T info, int index) {
@@ -46,7 +46,7 @@ public class Queue<T> {
 
 		current.setNext(temp);
 
-		incrementCounter();
+		incrementSize();
 		
 	}
 
@@ -60,11 +60,11 @@ public class Queue<T> {
 		return this.size;
 	}
 
-	private void incrementCounter() {
+	private void incrementSize() {
 		this.size++;
 	}
 
-	private void decrementCounter() {
+	private void decrementSize() {
 		this.size--;
 	}
 
