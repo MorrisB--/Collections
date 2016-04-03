@@ -29,20 +29,23 @@ public class Stack<T> {
 
 	}
 
-	public T pop() {
+	public T pop() throws NullPointerException {
 
 		Node<T> current = root;
 		T returnedInfo;
 
-		if (this.size() == 1)
+		if (this.size() == 1) {
 			returnedInfo = current.getInfo();
+			current = null;
+		} else {
+			for (int i = 0; i < this.size() - 2; i++) {
+				current = current.getNext();
+			}
 
-		for (int i = 0; i < this.size() - 2; i++) {
-			current = current.getNext();
+			returnedInfo = current.getNext().getInfo();
+			current.setNext(null);
 		}
-
-		returnedInfo = current.getNext().getInfo();
-		current.setNext(null);
+		
 		decrementCounter();
 		return returnedInfo;
 	}
@@ -75,6 +78,8 @@ public class Stack<T> {
 	}
 
 	public boolean isEmpty() {
+		if (this.size() == 0)
+			return true;
 		return false;
 	}
 
