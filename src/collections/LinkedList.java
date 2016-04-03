@@ -13,19 +13,20 @@ public class LinkedList<T> implements List<T> {
 
 		if (root == null) {
 			root = new Node<T>(info);
-		}
+		} else {
 
-		Node<T> temp = new Node<T>(info);
-		Node<T> current = root;
+			Node<T> temp = new Node<T>(info);
+			Node<T> current = root;
 
-		if (current != null) {
+			if (current != null) {
 
-			while (current.getNext() != null) {
-				current = current.getNext();
+				while (current.getNext() != null) {
+					current = current.getNext();
+				}
+
+				// the last node's "next" reference set to our new node
+				current.setNext(temp);
 			}
-
-			// the last node's "next" reference set to our new node
-			current.setNext(temp);
 		}
 
 		incrementCounter();
@@ -39,6 +40,7 @@ public class LinkedList<T> implements List<T> {
 		counter++;
 	}
 
+	@SuppressWarnings("unused")
 	private void decrementCounter() {
 		counter--;
 	}
@@ -66,7 +68,7 @@ public class LinkedList<T> implements List<T> {
 			return null;
 		Node<T> current = null;
 		if (root != null) {
-			current = root.getNext();
+			current = root;
 			for (int i = 0; i < index; i++) {
 				if (current.getNext() == null)
 					return null;
@@ -82,33 +84,15 @@ public class LinkedList<T> implements List<T> {
 	}
 
 	public T remove(int index) {
-
-		if (index < 0 || index > size())
-			return null;
-
 		Node<T> current = root;
-		Node<T> returnRemoved = new Node<T>(current.getInfo());
-		if (root != null) {
 
-			if (index == 0) {
-				root.setInfo(null);
-				root = root.getNext();
-				return returnRemoved.getInfo();
+		if (index == 0)
+			root = root.getNext();
+		else {
+			for (int i = 0; i < index - 1; i++) {
+				current = current.next;
 			}
-
-			for (int i = 0; i < index; i++) {
-				if (current.getNext() == null)
-					return null;// false;
-
-				current = current.getNext();
-			}
-			// save the info being removed to return at the end
-			returnRemoved.setInfo(current.getInfo());
 			current.setNext(current.getNext().getNext());
-
-			decrementCounter();
-			return returnRemoved.getInfo();
-
 		}
 		return null;
 	}
@@ -117,23 +101,29 @@ public class LinkedList<T> implements List<T> {
 		return getCounter();
 	}
 
-	public String toString() {
+	public String toString() throws NullPointerException {
 		String output = "";
 
-		if (root != null) {
-			Node<T> current = root.getNext();
-			while (current != null) {
-				output += "[" + current.getInfo().toString() + "]";
-				current = current.getNext();
-			}
+		try {
 
-		} else
-			output = "[]";
+			if (root != null) {
+				Node<T> current = root;
+				// output += root.getInfo().toString();
+				while (current != null) {
+					output += "[" + current.getInfo().toString() + "]";
+					current = current.getNext();
+				}
+
+			} else
+				output = "[]";
+		} catch (Exception e) {
+			System.out.println("[]");
+		}
 
 		return output;
 	}
 
-	public T remove() {
+	public T remove() throws NullPointerException {
 		return remove(getCounter() - 1);
 	}
 

@@ -9,13 +9,16 @@ public class LLTester {
 		list1.add(14);
 		list1.add(18);
 		list1.add(22);
-		System.out.println(list1);
+		System.out.println(list1);  
 		list1.add(21);
 		list1.add(24, 2);
 		list1.add(26, 3);
 		System.out.println(list1);
 		list1.remove();
 		list1.remove(1);
+		list1.remove(0);
+		list1.remove(3);
+		list1.remove(2);
 		list1.remove(0);
 		System.out.println(list1);
 		checkContains(list1, 10);
@@ -28,7 +31,6 @@ public class LLTester {
 		System.out.println(list1);
 	}
 
-	// This will only work with LinkedLists, need to make more generic
 	public static void checkContains(LinkedList<Integer> list, int v) {
 		if (list.contains(v)) {
 			System.out.println("List contains " + v + "!");
