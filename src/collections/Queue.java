@@ -31,11 +31,27 @@ public class Queue<T> {
 		incrementCounter();
 	}
 
-	public void enqueue(T info, int location) {
+	public void enqueue(T info, int index) {
 
+		Node<T> temp = new Node<T>(info);
+		Node<T> current = root;
+
+		if (current != null) {
+			for (int i = 1; i < index && current.getNext() != null; i++) {
+				current = current.getNext();
+			}
+		}
+
+		temp.setNext(current.getNext());
+
+		current.setNext(temp);
+
+		incrementCounter();
+		
 	}
 
 	public T dequeue() {
+		
 		return null;
 	}
 
