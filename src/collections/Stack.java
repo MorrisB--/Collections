@@ -30,25 +30,36 @@ public class Stack<T> {
 	}
 
 	public T pop() {
-		
+
 		Node<T> current = root;
 		T returnedInfo;
-		
-		if(this.size()==1)
+
+		if (this.size() == 1)
 			returnedInfo = current.getInfo();
-		
-		for (int i = 0; i<this.size()-2;i++){
-			current=current.getNext();
+
+		for (int i = 0; i < this.size() - 2; i++) {
+			current = current.getNext();
 		}
-		
-		returnedInfo=current.getNext().getInfo();
+
+		returnedInfo = current.getNext().getInfo();
 		current.setNext(null);
 		decrementCounter();
 		return returnedInfo;
 	}
 
 	public T peek() {
-		return null;
+		Node<T> current = root;
+		T returnedInfo;
+
+		if (this.size() == 1)
+			returnedInfo = current.getInfo();
+
+		for (int i = 0; i < this.size() - 2; i++) {
+			current = current.getNext();
+		}
+
+		returnedInfo = current.getNext().getInfo();
+		return returnedInfo;
 	}
 
 	public int size() {
