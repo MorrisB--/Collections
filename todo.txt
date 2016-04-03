@@ -1,6 +1,5 @@
 To Do:
 
-* Create Stack
 * Create Binary Search Tree
 * Organize folders and packages
 
