@@ -50,12 +50,17 @@ public class Queue<T> {
 
 	}
 
-	public T dequeue() {
+	public T dequeue() throws NullPointerException {
 
 		T returnedInfo = root.info;
 
-		root = root.getNext();
+		if (root.getNext() == null)
+			root = null;
+		else
+			root = root.getNext();
 
+		decrementSize();
+		
 		return returnedInfo;
 	}
 
@@ -71,7 +76,6 @@ public class Queue<T> {
 	private void decrementSize() {
 		this.size--;
 	}
-	
 
 	public boolean isEmpty() {
 		if (this.size() == 0)
