@@ -13,3 +13,8 @@ To Do:
 
 * Create clear() method
 * Change size() to getSize()
+
+/* Binary Search Tree */
+
+* Make everything generic
+* Finish sizeRec() method
