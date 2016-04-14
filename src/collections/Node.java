@@ -2,6 +2,8 @@ package collections;
 
 	final class Node<T> {
 		Node<T> next;
+		Node<T> left;
+		Node<T> right;
 		T info;
  
 		public Node(T infoValue) {
