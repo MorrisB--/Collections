@@ -1,142 +1,187 @@
 package collections;
 
-import collections.Queue;
+public class BinarySearchTree {
 
-public class BinarySearchTree<T> // implements BSTInterface<T>
-{
 	Node<Integer> root;
 
-	public void add(Integer info) {
-		Node n = new Node(info);
-		if (root == null) {
-			root = n;
-			return;
-		}
-		add(n, root);
-	}
+	public void addNode(int info) {
 
-	public void add(Node<Integer> n, Node<Integer> t) {
-		if (n.info < t.info) {
-			if (t.left == null) {
-				t.left = n;
-			} else {
-				add(n, t.left);
+		Node<Integer> temp = new Node<Integer>(info);
+
+		if (root == null)
+			root = temp;
+		else {
+
+			Node<Integer> current = root;
+			Node<Integer> parent;
+
+			while (true) {
+
+				parent = current;
+
+				if (info < current.info) {
+
+					current = current.left;
+
+					if (current == null) {
+						parent.left = temp;
+						break;
+					}
+				} else {
+
+					current = current.right;
+					if (current == null) {
+						parent.right = temp;
+						break;
+					}
+				}
 			}
-		} else {
-			if (t.right == null) {
-				t.right = n;
+		}
+	}
+
+	public void inOrderTraversal(Node<Integer> current) {
+
+		if (current != null) {
+
+			inOrderTraversal(current.left);
+			System.out.println(current.info);
+			inOrderTraversal(current.right);
+		}
+	}
+
+	public void preorderTraverseTree(Node<Integer> focusNode) {
+
+		if (focusNode != null) {
+
+			System.out.println(focusNode.info);
+			preorderTraverseTree(focusNode.left);
+			preorderTraverseTree(focusNode.right);
+		}
+
+	}
+
+	public void postOrder(Node<Integer> temp) {
+
+		if (temp != null) {
+
+			postOrder(temp.left);
+			postOrder(temp.right);
+			System.out.println(temp.info);
+		}
+	}
+
+	public Node<Integer> findNode(int info) {
+
+		Node<Integer> current = root;
+
+		while (current.info != info) {
+
+			if (info < current.info)
+				current = current.left;
+			else
+				current = current.right;
+			if (current == null)
+				return null;
+		}
+		return current;
+	}
+
+	public boolean remove(int info) {
+
+		Node<Integer> current = root;
+		Node<Integer> parent = root;
+
+		boolean isLeftChild = true;
+
+		while (current.info != info) {
+
+			parent = current;
+
+			if (info < current.info) {
+
+				isLeftChild = true;
+				current = current.left;
+
 			} else {
-				add(n, t.right);
+				isLeftChild = false;
+				current = current.right;
 			}
-		}
-	}
 
-	public void preOrder(Node<Integer> n, Queue<Integer> que) {
-		if (n == null) {
-			return;
-		}
-		System.out.print(n.info + " ");
-		que.enqueue(n.info);
-		preOrder(n.left, que);
-		preOrder(n.right, que);
-	}
+			if (current == null)
+				return false;
 
-	public void inOrder(Node<Integer> n, Queue<Integer> que) {
-		if (n == null) {
-			return;
 		}
-		inOrder(n.left, que);
-		System.out.print(n.info + " ");
-		que.enqueue(n.info);
-		inOrder(n.right, que);
-	}
 
-	public Queue<Integer> traverse(int p) {
-		Queue<Integer> q = new Queue<>();
-		if (p == 0) {
-			inOrder(root, q);
-			return q;
-		} else if (p == 1) {
-			preOrder(root, q);
-			return q;
+		if (current.left == null && current.right == null) {
+			if (current == root)
+				root = null;
+
+			else if (isLeftChild)
+				parent.left = null;
+			else
+				parent.right = null;
+
+		} else if (current.right == null) {
+
+			if (current == root)
+				root = current.left;
+			else if (isLeftChild)
+				parent.left = current.left;
+			else
+				parent.right = current.left;
+
+		} else if (current.left == null) {
+
+			if (current == root)
+				root = current.right;
+			else if (isLeftChild)
+				parent.left = current.right;
+			else
+				parent.right = current.right;
+
 		} else {
-			System.out.println("Not implemented!");
+
+			Node<Integer> replacement = getReplacementNode(current);
+
+			if (current == root)
+				root = replacement;
+			else if (isLeftChild)
+				parent.left = replacement;
+			else
+				parent.right = replacement;
+			replacement.left = current.left;
+
 		}
-		return null;
+
+		return true;
+
 	}
 
-	public boolean remove(Integer info) {
-		return false;
-	}
+	public Node<Integer> getReplacementNode(Node<Integer> replacedNode) {
 
-	public void balance() {
-	}
+		Node<Integer> replacementParent = replacedNode;
+		Node<Integer> replacement = replacedNode;
 
-	private int sizeRec(Node n) {
-		if (n == null) {
-			return 0;
+		Node<Integer> current = replacedNode.right;
+
+		while (current != null) {
+
+			replacementParent = replacement;
+
+			replacement = current;
+
+			current = current.left;
+
 		}
-		return 1 /* ? */;
-	}
 
-	public int size() {
-		return sizeRec(root);
-	}
+		if (replacement != replacedNode.right) {
 
-	public boolean contains(Integer info) {
-		return false;
-	}
+			replacementParent.left = replacement.right;
+			replacement.right = replacedNode.right;
 
-	public static void main(String[] args) {
-		BinarySearchTree bst = new BinarySearchTree();
-		for (int i = 0; i < 16; i++) {
-			int d = (int) (Math.random() * 100);
-			bst.add(d);
 		}
-		System.out.println("done!");
-		System.out.print("In order: ");
-		bst.traverse(0);
-		System.out.println();
-		System.out.print("Pre order: ");
-		bst.traverse(1);
-		System.out.println();
-		System.out.print("Post order: ");
-		bst.traverse(2);
-		System.out.println();
 
-		int s = bst.size();
-		System.out.println("Size = " + s);
+		return replacement;
+
 	}
-
-	/*************/
-	private int heightRec(Node<Integer> n) {
-		if (n == null)
-			return 0;
-		return 1 + Math.max(heightRec(n.left), heightRec(n.right));
-	}
-
-	public int height() {
-		return heightRec(root);
-	}
-
-	private T min(Node<T> n) {
-		if (n.left == null)
-			return n.info;
-		return min(n.left);
-	}
-
-	private T max(Node<T> n) {
-		if (n.right == null)
-			return n.info;
-		return max(n.right);
-	}
-
-	public T predecessor(Node<T> n) {
-		return max(n.left);
-	}
-
-	public T sucessor(Node<T> n) {
-		return min(n.right);
-	}
-
 }
