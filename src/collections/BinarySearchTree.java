@@ -20,7 +20,6 @@ public class BinarySearchTree {
 				parent = current;
 
 				if (info < current.info) {
-
 					current = current.left;
 
 					if (current == null) {
@@ -49,13 +48,13 @@ public class BinarySearchTree {
 		}
 	}
 
-	public void preOrder(Node<Integer> focusNode) {
+	public void preOrder(Node<Integer> current) {
 
-		if (focusNode != null) {
+		if (current != null) {
 
-			System.out.println(focusNode.info);
-			preOrder(focusNode.left);
-			preOrder(focusNode.right);
+			System.out.println(current.info);
+			preOrder(current.left);
+			preOrder(current.right);
 		}
 
 	}
@@ -161,15 +160,12 @@ public class BinarySearchTree {
 
 		Node<Integer> replacementParent = replacedNode;
 		Node<Integer> replacement = replacedNode;
-
 		Node<Integer> current = replacedNode.right;
 
 		while (current != null) {
 
 			replacementParent = replacement;
-
 			replacement = current;
-
 			current = current.left;
 
 		}
