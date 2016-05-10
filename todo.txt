@@ -1,12 +1,6 @@
 To Do:
 
-* Create Binary Search Tree
 * Organize folders and packages
-
-
-/* LinkedList */
-
-*Add constructor to support constructor in BigInteger
 
 
 /* Queue */
