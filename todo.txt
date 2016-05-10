@@ -1,7 +1,5 @@
 To Do:
 
-* Organize folders and packages
-* Create a hash table
 
 /* Queue */
 
