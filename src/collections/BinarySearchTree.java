@@ -39,23 +39,23 @@ public class BinarySearchTree {
 		}
 	}
 
-	public void inOrderTraversal(Node<Integer> current) {
+	public void inOrder(Node<Integer> current) {
 
 		if (current != null) {
 
-			inOrderTraversal(current.left);
+			inOrder(current.left);
 			System.out.println(current.info);
-			inOrderTraversal(current.right);
+			inOrder(current.right);
 		}
 	}
 
-	public void preorderTraverseTree(Node<Integer> focusNode) {
+	public void preOrder(Node<Integer> focusNode) {
 
 		if (focusNode != null) {
 
 			System.out.println(focusNode.info);
-			preorderTraverseTree(focusNode.left);
-			preorderTraverseTree(focusNode.right);
+			preOrder(focusNode.left);
+			preOrder(focusNode.right);
 		}
 
 	}
