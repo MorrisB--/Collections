@@ -64,8 +64,7 @@ public class Queue<T> {
 		return returnedInfo;
 	}
 
-	// change to getSize()
-	public int size() {
+	public int getSize() {
 		return this.size;
 	}
 
@@ -78,7 +77,7 @@ public class Queue<T> {
 	}
 
 	public boolean isEmpty() {
-		if (this.size() == 0)
+		if (this.getSize() == 0)
 			return true;
 		return false;
 	}
