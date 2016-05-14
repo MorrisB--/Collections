@@ -78,7 +78,6 @@ public class LinkedList<T> implements List<T> {
 			return current.getInfo();
 		}
 
-		// This may break something, not sure why it works
 		return (T) current;
 
 	}
@@ -108,7 +107,7 @@ public class LinkedList<T> implements List<T> {
 
 			if (root != null) {
 				Node<T> current = root;
-				// output += root.getInfo().toString();
+
 				while (current != null) {
 					output += "[" + current.getInfo().toString() + "]";
 					current = current.getNext();
